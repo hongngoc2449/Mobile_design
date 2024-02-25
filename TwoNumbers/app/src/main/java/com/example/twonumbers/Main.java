@@ -17,8 +17,8 @@ public class Main extends AppCompatActivity {
     private EditText textA, textB;
     private Button plus,minus,multiply,divide;
     private ListView listView;
-    private ArrayList<Integer> arrayList;
-    private ArrayAdapter<Integer> arrayAdapter;
+    private ArrayList<Double> arrayList;
+    private ArrayAdapter<Double> arrayAdapter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,13 +31,13 @@ public class Main extends AppCompatActivity {
         multiply = findViewById(R.id.multiply);
         divide = findViewById(R.id.divide);
         listView = findViewById(R.id.listView);
-        arrayList = new ArrayList<Integer>();
+        arrayList = new ArrayList<Double>();
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,arrayList);
         listView.setAdapter(arrayAdapter);
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int sum = Integer.parseInt(textA.getText().toString()) + Integer.parseInt(textB.getText().toString());
+                double sum = Double.parseDouble(textA.getText().toString()) + Double.parseDouble(textB.getText().toString());
                 arrayList.add(sum);
                 arrayAdapter.notifyDataSetChanged();
             }
@@ -45,23 +45,23 @@ public class Main extends AppCompatActivity {
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int minus = Integer.parseInt(textA.getText().toString()) - Integer.parseInt(textB.getText().toString());
-                arrayList.add(minus);
+                double diff = Double.parseDouble(textA.getText().toString()) - Double.parseDouble(textB.getText().toString());
+                arrayList.add(diff);
                 arrayAdapter.notifyDataSetChanged();
             }
         });
         multiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int mul = Integer.parseInt(textA.getText().toString()) * Integer.parseInt(textB.getText().toString());
-                arrayList.add(mul);
+                double prod = Double.parseDouble(textA.getText().toString()) * Double.parseDouble(textB.getText().toString());
+                arrayList.add(prod);
                 arrayAdapter.notifyDataSetChanged();
             }
         });
         divide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int quotient = Integer.parseInt(textA.getText().toString()) / Integer.parseInt(textB.getText().toString());
+                double quotient = Double.parseDouble(textA.getText().toString()) / Double.parseDouble(textB.getText().toString());
                 arrayList.add(quotient);
                 arrayAdapter.notifyDataSetChanged();
             }
